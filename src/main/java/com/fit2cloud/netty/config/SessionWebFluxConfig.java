@@ -10,11 +10,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.WebSessionServerSecurityContextRepository;
+import org.springframework.web.reactive.config.ViewResolverRegistry;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+import org.thymeleaf.spring5.view.reactive.ThymeleafReactiveViewResolver;
+
+import javax.annotation.Resource;
 
 
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class SessionWebFluxConfig {
+public class SessionWebFluxConfig implements WebFluxConfigurer {
+
+    @Resource
+    private ThymeleafReactiveViewResolver thymeleafReactiveViewResolver;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
@@ -41,5 +49,10 @@ public class SessionWebFluxConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(thymeleafReactiveViewResolver);
     }
 }
