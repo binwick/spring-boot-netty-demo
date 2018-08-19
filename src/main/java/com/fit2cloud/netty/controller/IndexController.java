@@ -1,5 +1,6 @@
 package com.fit2cloud.netty.controller;
 
+import com.fit2cloud.netty.utils.SessionUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.reactive.result.view.Rendering;
@@ -22,6 +23,7 @@ public class IndexController {
      */
     @GetMapping("/")
     public Rendering index(WebSession session) {
+        System.out.println(SessionUtils.getUser().block());
         return Rendering.view("index")
                 .modelAttribute("sessionId", session.getId()).build();
     }
