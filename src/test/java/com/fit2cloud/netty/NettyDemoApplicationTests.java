@@ -18,5 +18,8 @@ public class NettyDemoApplicationTests {
     public void contextLoads() {
     }
 
+    @Test
+    public void testInsert() {
+    }
 
 }

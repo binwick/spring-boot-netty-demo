@@ -1,7 +1,8 @@
 package com.fit2cloud.netty.controller;
 
-import com.fit2cloud.netty.model.Tag;
-import com.fit2cloud.netty.service.TagService;
+import com.fit2cloud.netty.model.Plugin;
+import com.fit2cloud.netty.service.PluginService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +11,14 @@ import reactor.core.publisher.Flux;
 import javax.annotation.Resource;
 
 @RestController
-public class TagController {
+public class PluginController {
     @Resource
-    private TagService tagService;
+    private PluginService pluginService;
 
-    @GetMapping("tags")
+    @GetMapping("plugins")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public Flux<Tag> tags() {
-        return Flux.fromStream(tagService.getAllTags().stream());
+    public Flux<Plugin> tags() {
+        PageHelper.startPage(1, 2);
+        return Flux.fromStream(pluginService.selectPlugins().stream());
     }
 }

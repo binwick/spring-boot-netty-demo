@@ -39,7 +39,7 @@
         </javaClientGenerator>
 
         <!-- 要生成的数据库表 -->
-        <table tableName="tag"/>
+        <table tableName="plugin"/>
 
     </context>
 </generatorConfiguration>
