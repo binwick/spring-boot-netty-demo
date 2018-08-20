@@ -1,10 +1,13 @@
 package com.fit2cloud.netty.controller;
 
 import com.fit2cloud.netty.utils.SessionUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.result.view.Rendering;
 import org.springframework.web.server.WebSession;
+import reactor.core.publisher.Mono;
 
 @Controller
 public class IndexController {
@@ -23,9 +26,15 @@ public class IndexController {
      */
     @GetMapping("/")
     public Rendering index(WebSession session) {
-        System.out.println(SessionUtils.getUser().block());
+        System.out.println(SessionUtils.getUser());
         return Rendering.view("index")
                 .modelAttribute("sessionId", session.getId()).build();
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public Mono<User> user() {
+        return SessionUtils.getUser();
     }
 }
 
