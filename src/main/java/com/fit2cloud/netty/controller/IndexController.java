@@ -1,6 +1,7 @@
 package com.fit2cloud.netty.controller;
 
 import com.fit2cloud.netty.utils.SessionUtils;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,6 @@ public class IndexController {
      */
     @GetMapping("/")
     public Rendering index(WebSession session) {
-        System.out.println(SessionUtils.getUser());
         return Rendering.view("index")
                 .modelAttribute("sessionId", session.getId()).build();
     }
@@ -34,7 +34,14 @@ public class IndexController {
     @GetMapping("/user")
     @ResponseBody
     public Mono<User> user() {
+        Mono<String> then = SessionUtils.getUser().thenReturn("current user");
         return SessionUtils.getUser();
+    }
+
+    @GetMapping("/system/user")
+    @ResponseBody
+    public User user(@AuthenticationPrincipal User user) {
+        return user;
     }
 }
 
