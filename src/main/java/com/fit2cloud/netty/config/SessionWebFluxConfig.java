@@ -35,6 +35,7 @@ public class SessionWebFluxConfig implements WebFluxConfigurer {
                 .and()
                 .formLogin()
                 .and()
+                .csrf().disable()
                 .build();
         // @formatter:on
     }
