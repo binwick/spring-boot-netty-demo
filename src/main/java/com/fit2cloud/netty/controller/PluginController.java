@@ -20,7 +20,7 @@ public class PluginController {
     @Resource
     private TagService tagService;
 
-    @GetMapping("plugins/{goPage}/{pageSize}")
+    @GetMapping("tag/list/{goPage}/{pageSize}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Flux<Tag> tags(@PathVariable int goPage, @PathVariable int pageSize) {
         PageHelper.startPage(goPage, pageSize);
