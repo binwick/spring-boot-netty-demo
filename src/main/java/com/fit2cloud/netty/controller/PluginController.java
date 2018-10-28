@@ -1,7 +1,7 @@
 package com.fit2cloud.netty.controller;
 
-import com.fit2cloud.netty.model.Plugin;
-import com.fit2cloud.netty.service.PluginService;
+import com.fit2cloud.netty.model.Tag;
+import com.fit2cloud.netty.service.TagService;
 import com.fit2cloud.netty.utils.SessionUtils;
 import com.github.pagehelper.PageHelper;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,13 +18,13 @@ import javax.annotation.Resource;
 @RestController
 public class PluginController {
     @Resource
-    private PluginService pluginService;
+    private TagService tagService;
 
     @GetMapping("plugins/{goPage}/{pageSize}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public Flux<Plugin> tags(@PathVariable int goPage, @PathVariable int pageSize) {
+    public Flux<Tag> tags(@PathVariable int goPage, @PathVariable int pageSize) {
         PageHelper.startPage(goPage, pageSize);
-        return Flux.fromStream(pluginService.selectPlugins().stream());
+        return Flux.fromStream(tagService.getAllTags().stream());
     }
 
     @GetMapping("/user")

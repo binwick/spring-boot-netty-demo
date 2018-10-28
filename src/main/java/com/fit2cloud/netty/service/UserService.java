@@ -19,6 +19,10 @@ public class UserService implements ReactiveUserDetailsService {
     @Resource
     private UserMapper userMapper;
 
+    public List<User> selectUsers() {
+        return userMapper.selectByExample(null);
+    }
+
     @Override
     public Mono<UserDetails> findByUsername(String username) {
 
