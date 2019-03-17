@@ -10,6 +10,13 @@
     <!-- 此处指定生成针对MyBatis3的DAO -->
     <context id="mysql" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <!-- enable annotations -->
+            <!--<property name="builder" value="true"/>-->
+            <!-- disable annotations -->
+            <property name="allArgsConstructor" value="false"/>
+        </plugin>
+
 
         <!-- 用来除去时间信息的，这在配合类似subversion的代码管理工具时使用很有效，因为可以减少没有必要的注释迁入 -->
 
@@ -39,7 +46,7 @@
         </javaClientGenerator>
 
         <!-- 要生成的数据库表 -->
-        <table tableName="plugin"/>
+        <table tableName="user"/>
 
     </context>
 </generatorConfiguration>
