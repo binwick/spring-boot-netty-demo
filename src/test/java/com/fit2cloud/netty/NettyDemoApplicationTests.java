@@ -2,6 +2,7 @@ package com.fit2cloud.netty;
 
 import com.fit2cloud.netty.model.User;
 import com.fit2cloud.netty.service.UserService;
+import com.github.pagehelper.PageHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,5 +25,10 @@ public class NettyDemoApplicationTests {
         });
     }
 
-
+    @Test
+    public void testPage() {
+        PageHelper.startPage(1, 1);
+        List<User> users = userService.selectUsers();
+        System.out.println(users.size());
+    }
 }
