@@ -29,6 +29,14 @@ public class NettyDemoApplicationTests {
     public void testPage() {
         PageHelper.startPage(1, 1);
         List<User> users = userService.selectUsers();
-        System.out.println(users.size());
+        users.forEach(u -> {
+            System.out.println(u.getId());
+        });
+    }
+
+    @Test
+    public void testSelectUser() throws Exception {
+        User user = userService.findUserById(1L);
+        System.out.println(user.getId());
     }
 }
