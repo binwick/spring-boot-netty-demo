@@ -47,7 +47,7 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 接口 XMLMAPPER MIXEDMAPPER ANNOTATEDMAPPER -->
-        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.fit2cloud.netty.dao"
+        <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.fit2cloud.netty.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
