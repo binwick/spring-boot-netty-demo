@@ -17,6 +17,8 @@
             <property name="allArgsConstructor" value="false"/>
         </plugin>
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
 
 
         <!-- 用来除去时间信息的，这在配合类似subversion的代码管理工具时使用很有效，因为可以减少没有必要的注释迁入 -->
@@ -44,14 +46,15 @@
         <sqlMapGenerator targetPackage="com.fit2cloud.netty.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <!-- 接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fit2cloud.netty.dao"
+        <!-- 接口 XMLMAPPER MIXEDMAPPER ANNOTATEDMAPPER -->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.fit2cloud.netty.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 要生成的数据库表 -->
         <table tableName="user"/>
+        <table tableName="tag"/>
 
     </context>
 </generatorConfiguration>

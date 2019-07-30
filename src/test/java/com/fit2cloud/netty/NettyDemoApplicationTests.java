@@ -30,7 +30,7 @@ public class NettyDemoApplicationTests {
         PageHelper.startPage(1, 1);
         List<User> users = userService.selectUsers();
         users.forEach(u -> {
-            System.out.println(u.getId());
+            System.out.println(u);
         });
     }
 
