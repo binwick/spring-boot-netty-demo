@@ -3,6 +3,7 @@ package com.fit2cloud.netty.dao;
 import com.fit2cloud.netty.model.Tag;
 import com.fit2cloud.netty.model.TagExample;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -33,6 +34,8 @@ public interface TagMapper {
     int insert(Tag record);
 
     int insertSelective(Tag record);
+
+    List<Tag> selectByExampleWithRowbounds(TagExample example, RowBounds rowBounds);
 
     List<Tag> selectByExample(TagExample example);
 

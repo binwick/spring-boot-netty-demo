@@ -5,6 +5,7 @@ import com.fit2cloud.netty.dao.ext.ExtUserMapper;
 import com.fit2cloud.netty.model.SystemUser;
 import com.fit2cloud.netty.model.User;
 import com.fit2cloud.netty.model.UserExample;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +25,10 @@ public class UserService implements ReactiveUserDetailsService {
 
     public List<User> selectUsers() {
         return userMapper.selectByExample(null);
+    }
+
+    public List<User> selectUsersByRowBounds(RowBounds rowBounds) {
+        return userMapper.selectByExampleWithRowbounds(null, rowBounds);
     }
 
     @Override

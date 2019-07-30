@@ -3,6 +3,7 @@ package com.fit2cloud.netty;
 import com.fit2cloud.netty.model.User;
 import com.fit2cloud.netty.service.UserService;
 import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,6 +33,12 @@ public class NettyDemoApplicationTests {
         users.forEach(u -> {
             System.out.println(u);
         });
+    }
+
+    @Test
+    public void testRowBounds() {
+        List<User> users = userService.selectUsersByRowBounds(new RowBounds(1, 1));
+        System.out.println(users.size());
     }
 
     @Test

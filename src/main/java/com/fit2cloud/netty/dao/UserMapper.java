@@ -3,6 +3,7 @@ package com.fit2cloud.netty.dao;
 import com.fit2cloud.netty.model.User;
 import com.fit2cloud.netty.model.UserExample;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -43,6 +44,8 @@ public interface UserMapper {
     int insert(User record);
 
     int insertSelective(User record);
+
+    List<User> selectByExampleWithRowbounds(UserExample example, RowBounds rowBounds);
 
     List<User> selectByExample(UserExample example);
 
