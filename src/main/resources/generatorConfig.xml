@@ -17,8 +17,6 @@
             <property name="allArgsConstructor" value="false"/>
         </plugin>
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
-        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
 
 
