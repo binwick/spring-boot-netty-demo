@@ -44,6 +44,6 @@ public class NettyDemoApplicationTests {
     @Test
     public void testSelectUser() throws Exception {
         User user = userService.findUserById(1L);
-        System.out.println(user.getId());
+        System.out.println(user.getName());
     }
 }
