@@ -1,7 +1,7 @@
 package com.fit2cloud.netty.dao;
 
 import com.fit2cloud.netty.model.User;
-import com.fit2cloud.netty.model.UserExample;
+import com.fit2cloud.netty.model.UserCriteria;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    long countByExample(UserExample example);
+    long countByExample(UserCriteria example);
 
-    int deleteByExample(UserExample example);
+    int deleteByExample(UserCriteria example);
 
     @Delete({
         "delete from user",
@@ -45,9 +45,9 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    List<User> selectByExampleWithRowbounds(UserExample example, RowBounds rowBounds);
+    List<User> selectByExampleWithRowbounds(UserCriteria example, RowBounds rowBounds);
 
-    List<User> selectByExample(UserExample example);
+    List<User> selectByExample(UserCriteria example);
 
     @Select({
         "select",
@@ -60,9 +60,9 @@ public interface UserMapper {
     @ResultMap("com.fit2cloud.netty.dao.UserMapper.BaseResultMap")
     User selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserCriteria example);
 
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+    int updateByExample(@Param("record") User record, @Param("example") UserCriteria example);
 
     int updateByPrimaryKeySelective(User record);
 

@@ -75,7 +75,7 @@
     id, server_id, group_id, name, value, cluster_id, cluster_role_id, server_name, cluster_name, 
     cluster_role_name
   </sql>
-  <select id="selectByExample" parameterType="com.fit2cloud.netty.model.TagExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fit2cloud.netty.model.TagCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -89,7 +89,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.fit2cloud.netty.model.TagExample">
+  <delete id="deleteByExample" parameterType="com.fit2cloud.netty.model.TagCriteria">
     delete from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -162,7 +162,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fit2cloud.netty.model.TagExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fit2cloud.netty.model.TagCriteria" resultType="java.lang.Long">
     select count(*) from tag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -255,7 +255,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.fit2cloud.netty.model.TagExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="com.fit2cloud.netty.model.TagCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

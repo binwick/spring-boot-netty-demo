@@ -88,7 +88,7 @@
     active_timeout, forget_code, forget_timeout, last_login, description, ldap_id, staff_id, 
     last_mode, current_group_id, user_type, cost_center_id
   </sql>
-  <select id="selectByExample" parameterType="com.fit2cloud.netty.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fit2cloud.netty.model.UserCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,7 +102,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.fit2cloud.netty.model.UserExample">
+  <delete id="deleteByExample" parameterType="com.fit2cloud.netty.model.UserCriteria">
     delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -247,7 +247,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fit2cloud.netty.model.UserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fit2cloud.netty.model.UserCriteria" resultType="java.lang.Long">
     select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -424,7 +424,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.fit2cloud.netty.model.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="com.fit2cloud.netty.model.UserCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

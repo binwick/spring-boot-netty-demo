@@ -1,7 +1,7 @@
 package com.fit2cloud.netty.dao;
 
 import com.fit2cloud.netty.model.Tag;
-import com.fit2cloud.netty.model.TagExample;
+import com.fit2cloud.netty.model.TagCriteria;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface TagMapper {
-    long countByExample(TagExample example);
+    long countByExample(TagCriteria example);
 
-    int deleteByExample(TagExample example);
+    int deleteByExample(TagCriteria example);
 
     @Delete({
         "delete from tag",
@@ -35,9 +35,9 @@ public interface TagMapper {
 
     int insertSelective(Tag record);
 
-    List<Tag> selectByExampleWithRowbounds(TagExample example, RowBounds rowBounds);
+    List<Tag> selectByExampleWithRowbounds(TagCriteria example, RowBounds rowBounds);
 
-    List<Tag> selectByExample(TagExample example);
+    List<Tag> selectByExample(TagCriteria example);
 
     @Select({
         "select",
@@ -49,9 +49,9 @@ public interface TagMapper {
     @ResultMap("com.fit2cloud.netty.dao.TagMapper.BaseResultMap")
     Tag selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") Tag record, @Param("example") TagExample example);
+    int updateByExampleSelective(@Param("record") Tag record, @Param("example") TagCriteria example);
 
-    int updateByExample(@Param("record") Tag record, @Param("example") TagExample example);
+    int updateByExample(@Param("record") Tag record, @Param("example") TagCriteria example);
 
     int updateByPrimaryKeySelective(Tag record);
 
