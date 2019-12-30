@@ -3,14 +3,14 @@ package com.fit2cloud.netty.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TagExample {
+public class TagCriteria {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TagExample() {
+    public TagCriteria() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
