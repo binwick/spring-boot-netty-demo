@@ -4,7 +4,7 @@ import com.fit2cloud.netty.dao.UserMapper;
 import com.fit2cloud.netty.dao.ext.ExtUserMapper;
 import com.fit2cloud.netty.model.SystemUser;
 import com.fit2cloud.netty.model.User;
-import com.fit2cloud.netty.model.UserExample;
+import com.fit2cloud.netty.model.UserCriteria;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,7 +49,7 @@ public class UserService implements ReactiveUserDetailsService {
     }
 
     private UserDetails queryByUserName(String username) {
-        UserExample example = new UserExample();
+        UserCriteria example = new UserCriteria();
         example.createCriteria().andEmailEqualTo(username);
         List<User> users = userMapper.selectByExample(example);
         if (users.size() == 0) {
